@@ -1,20 +1,34 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { useRouter } from 'next/router';
+import Link from "next/link";
 
+ 
 function HeaderNav() {
+
+    const Router = useRouter() 
+    
   return (
     <HeaderNavWrapper>
-        <HeaderNavLinks>
+        <Link href={'/'}>
+        <HeaderNavLinks active={Router.pathname == '/' ? true : false}>
             Campaign
         </HeaderNavLinks>
-        <HeaderNavLinks>
+        </Link>
+        <Link href={'/createcampaign'}>
+        <HeaderNavLinks active={Router.pathname == '/createcampaign' ? true : false}>
             Create Campaign
         </HeaderNavLinks>
-        <HeaderNavLinks>
+        </Link>
+        <Link href={'/dashboard'}>
+        <HeaderNavLinks active={Router.pathname == '/dashboard' ? true : false}>
             Dashboard
         </HeaderNavLinks>
-        <HeaderNavLinks>
+        </Link>
+        <Link href={'/aboutus'}>
+        <HeaderNavLinks active={Router.pathname == '/aboutus' ? true : false}>
             About Us
         </HeaderNavLinks>
+        </Link>
     </HeaderNavWrapper>
   )
 }
@@ -34,7 +48,7 @@ const HeaderNavLinks = styled.div`
     align-items: center;
     font-family: 'Roboto';
     margin: 0.7rem;  
-    background-color: ${(props) => props.theme.bgSubDiv};
+    background-color: ${(props) => props.active ? props.theme.bgSubDiv : props.theme.bgDiv};
     height: 2.2rem;
     border-radius: 10px;
     padding: 0 5px;
