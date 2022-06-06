@@ -19,16 +19,17 @@ const Form = () => {
         category: 'health',
     });
 
-    const [storyUrl, setStoryUrl] = useState()
-    const [imageUrl, setImageUrl] = useState()
-
     const [loading, setLoading] = useState(false);
     const [address, setAddress] = useState(''); // Campaign address which comes whenever user fills the form and submit it.
     const [uploaded, setUploaded] = useState(false);
 
+    const [storyUrl, setStoryUrl] = useState()
+    const [imageUrl, setImageUrl] = useState()
+
+
     const FormHandler = (e) => {
         setForm({
-            ...Form,
+            ...form,
             [e.target.name]: e.target.value
         })
     }
@@ -43,7 +44,7 @@ const Form = () => {
         e.preventDefault();
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-        console.log(signer);
+        // console.log(signer);
 
         if (form.campaignTitle === '') {
             toast.warn("Empty Campaign Title!");
@@ -74,7 +75,7 @@ const Form = () => {
 
             await campaignData.wait();
 
-            setAddress(campaignData.to)
+            setAddress(campaignData.to);
 
         }
     }

@@ -74,6 +74,14 @@ Create .babelrc file in the root directory and copy paste below code init:
 6)Downloading material ui dependencies to import material ui icons:
 npm install @emotion/styled @emotion/react @mui/icons-material
 7)After Doing all the header work and styling, now add the Wallet connect button in the Header.
+8)After completing the all Header and navigation part, now start working on the frontend of the pages like dashborad, campaign, create campaign and about us.
+9)Now work on the taking input from the user and uploading it to the IPFS part.
+10)Install the 'React Developer Tools' extension.
+11)Installing React Load Spinner and react-toastify:
+npm i react-loader-spinner react-toastify 
+12)'Uploading to IPFS par' -> Installing IPFS http client:
+npm install ipfs-htttp-client
+
 
 
 

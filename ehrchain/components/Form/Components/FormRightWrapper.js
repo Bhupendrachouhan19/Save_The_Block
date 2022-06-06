@@ -14,12 +14,12 @@ const FormRightWrapper = () => {
 
     const Handler = useContext(FormState);  
 
-    const [uploading, setUploading] = useState(false);
+    const [uploadingLoading, setUploadingLoading] = useState(false);
     const [uploaded, setUploaded] = useState(false);
 
     const uploadFiles = async (e) => {
         e.preventDefault();
-        setUploading(true);
+        setUploadingLoading(true);
 
         // For Uploading Story:
         if(Handler.form.story !== ""){
@@ -33,21 +33,21 @@ const FormRightWrapper = () => {
         }
 
         // For Uploading Image
-        if(Handler.image !== ''){
+        if(Handler.image !== null){
             // Will try to upload the image to the IPFS
             try {
                 const added = await client.add(Handler.image); // will add the story to to IPFS.
                 Handler.setImageUrl(added.path); // will pass the content Address or IPFS to the setImageUrl() method.
-                toast.success("Files Uploaded Successfully");
             } catch (error) {
                 toast.warn(`Error : Image Not Uploaded`); // Will show a popup this message if error occurs while uploading
             }
         }
 
         // After file uploaded, setting setUploading() to false
-        setUploading(false);
+        setUploadingLoading(false);
         setUploaded(true);
         Handler.setUploaded(true);
+        toast.success("Files Uploaded Successfully");
 
     }
 
@@ -77,11 +77,10 @@ const FormRightWrapper = () => {
       </FormInput>
 
       {
-        uploading == true ? <Button><TailSpin color='#fff' height={20}/></Button> : 
+        uploadingLoading == true ? <Button><TailSpin color='#fff' height={20}/></Button> : 
         uploaded == false ? <Button onClick={uploadFiles}> Upload Files to IPFS </Button> :
         <Button style={{cursor: "no-drop"}}>Files uploaded Sucessfully</Button> 
       }
-         
       <Button onClick={Handler.startCampaign}>
         Start Campaign
       </Button>
