@@ -3,6 +3,47 @@ import styled from 'styled-components';
 
 const FormRightWrapper = () => {
 
+<<<<<<< HEAD
+=======
+    const Handler = useContext(FormState);  
+
+    const [uploadingLoading, setUploadingLoading] = useState(false);
+    const [uploaded, setUploaded] = useState(false);
+
+    const uploadFiles = async (e) => {
+        e.preventDefault();
+        setUploadingLoading(true);
+
+        // For Uploading Story:
+        if(Handler.form.story !== ""){
+            // Will try to upload the story to the IPFS
+            try {
+                const added = await client.add(Handler.form.story); // will add the story to to IPFS.
+                Handler.setStoryUrl(added.path); // will pass the content Address or IPFS to the setStoryUrl() method.
+            } catch (error) {
+                toast.warn(`Error : Story Not Uploaded`); // Will show a popup this message if error occurs while uploading
+            }
+        }
+
+        // For Uploading Image
+        if(Handler.image !== null){
+            // Will try to upload the image to the IPFS
+            try {
+                const added = await client.add(Handler.image); // will add the story to to IPFS.
+                Handler.setImageUrl(added.path); // will pass the content Address or IPFS to the setImageUrl() method.
+            } catch (error) {
+                toast.warn(`Error : Image Not Uploaded`); // Will show a popup this message if error occurs while uploading
+            }
+        }
+
+        // After file uploaded, setting setUploading() to false
+        setUploadingLoading(false);
+        setUploaded(true);
+        Handler.setUploaded(true);
+        toast.success("Files Uploaded Successfully");
+
+    }
+>>>>>>> 516389e ( Bug Removed: Unhandled Runtime Error)
 
   return (
     <FormRight>
@@ -29,10 +70,19 @@ const FormRightWrapper = () => {
         </Image>
       </FormInput>
 
+<<<<<<< HEAD
       <Button>Upload Files to IPFS</Button>
         : <Button style={{cursor: "no-drop"}}>Files uploaded Sucessfully</Button>
 
       <Button>
+=======
+      {
+        uploadingLoading == true ? <Button><TailSpin color='#fff' height={20}/></Button> : 
+        uploaded == false ? <Button onClick={uploadFiles}> Upload Files to IPFS </Button> :
+        <Button style={{cursor: "no-drop"}}>Files uploaded Sucessfully</Button> 
+      }
+      <Button onClick={Handler.startCampaign}>
+>>>>>>> 516389e ( Bug Removed: Unhandled Runtime Error)
         Start Campaign
       </Button>
     </FormRight>
