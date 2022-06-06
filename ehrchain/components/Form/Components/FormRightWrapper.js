@@ -55,7 +55,12 @@ const FormRightWrapper = () => {
           </RowFirstInput>
           <RowSecondInput>
             <label>Choose Category</label>
+<<<<<<< HEAD
             <Select>
+=======
+            <Select onChange={Handler.FormHandler} value={Handler.form.category} name="category">
+              <option>Health</option>
+>>>>>>> fc2944a (Done some more Minor changes for Patch 4.1)
               <option>Education</option>
               <option>Health</option>
               <option>Animal</option>
