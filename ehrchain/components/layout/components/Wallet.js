@@ -48,7 +48,7 @@ const Wallet = () => {
   return (
     <ConnectWalletWrapper onClick={connectWallet}>
         {balance == '' ? <Balance></Balance> : <Balance>Acount Balance : {balance.slice(0,4)} Matic</Balance>}
-        {address == '' ? <Address>Connect Wallet</Address> :  <Address>Connected to : {address.slice(0,6)}...{address.slice(39)}</Address>} 
+        {address == '' ? <Address>Connect Wallet</Address> :  <Address>Connected With : {address.slice(0,6)}...{address.slice(39)}</Address>} 
     </ConnectWalletWrapper>
   )
 }
@@ -65,7 +65,7 @@ const ConnectWalletWrapper = styled.div`
     color: ${(props) => props.theme.color};
     font-size: 0.7rem;
     font-family: monospace;
-`
+    `
 
 const Address = styled.h2`
     background-color: ${(props) => props.theme.bgSubDiv};
@@ -75,7 +75,7 @@ const Address = styled.h2`
     align-items: center;
     border-radius: 12px;
     padding: 0 10px;
-`
+    `
 
 const Balance = styled.h2`
     display: flex;
