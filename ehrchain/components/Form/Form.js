@@ -2,7 +2,7 @@ import styled from "styled-components";
 import FormLeftWrapper from "./Components/FormLeftWrapper";
 import FormRightWrapper from './Components/FormRightWrapper';
 import { createContext, useState } from "react";
-import { Tailspin } from 'react-loader-spinner';
+import { TailSpin } from 'react-loader-spinner';
 import { ethers } from 'ethers';
 import { toast } from "react-toastify";
 import CampaignFactory from '../../artifacts/contracts/Campaign.sol/CampaignFactory.json'
@@ -52,7 +52,7 @@ const Form = () => {
             toast.warn("Empty Story!");
         } else if (form.requiredAmount === '') {
             toast.warn("Fill the Required Amount!");
-        } else if (uploaded === false) {
+        } else if (uploaded == false) {
             toast.warn("Some fields are Empty");
         } else {
             setLoading(true);
@@ -85,9 +85,9 @@ const Form = () => {
     <FormWrapper>
         <FormMain>
             { loading == true ? 
-                address !== '' ? 
+                address == '' ? 
                     <Spinner>
-                        <Tailspin height={60} />
+                        <TailSpin height={60} />
                     </Spinner> :
                 <Address>
                     <h1>Your Campaign Started Successfully ✔</h1>
